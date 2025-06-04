@@ -1,0 +1,38 @@
+# config.yaml
+
+data:
+  path: D:\ML\CAD-Recode reproduction\recode-dataset\cad_recode_dataset           # relative path to the root of our dataset
+  n_points: 256              # number of points per cloud
+  noise_std: 0.01            # Gaussian noise stddev
+  noise_prob: 0.5            # probability of adding noise in training
+
+model:
+  name: "Qwen/Qwen2-0.5B"     # HuggingFace model name
+  freeze_decoder: False       # whether to freeze decoder weights during training
+  pos_enc: False              # whether to use Fourier positional encoding in PointCloudProjector
+
+training:
+  mode: "full"              # can be "smoke" for quick tests or "full" for complete run
+  seed: 1337
+  multi_gpu: False           # whether to use multiple GPUs
+  resume_path: null          # path to checkpoint to resume from, if any
+  batch_size: 1
+  accumulation_steps: 1
+  num_workers: 1
+  lr: 3e-5
+  weight_decay: 0.01
+  warmup_steps: 10
+  max_steps: 5
+  val_interval: 4
+  max_epochs: 2
+  run_final_test: true
+
+logging:
+  use_wandb: True
+  project_name: "CAD-Recode"
+  log_interval: 1
+
+evaluation:
+  batch_size: 1
+  max_length: 256
+  num_candidates: 1

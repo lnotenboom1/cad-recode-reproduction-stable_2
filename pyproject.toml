@@ -1,0 +1,24 @@
+# pyproject.toml  – makes cad_recode pip-installable
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cad-recode"          # any name is fine
+version = "0.1.0"
+description = "CAD-Recode training pipeline"
+authors = [{name = "Your Name"}]
+
+# Core runtime deps (add / pin as needed)
+dependencies = [
+  "torch>=2.2",
+  "transformers>=4.40",
+  "cadquery>=2.4",
+  "omegaconf>=2.3",
+  "hydra-core>=1.3",
+  "tqdm",
+  "matplotlib>=3.8"
+]
+
+[tool.setuptools]
+packages = ["cad_recode"]     # only look for cad_recode package
